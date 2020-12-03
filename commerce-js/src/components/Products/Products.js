@@ -3,32 +3,7 @@ import { Grid } from "@material-ui/core";
 import Product from "./Product/Product";
 import useStyles from "./styles";
 
-const products = [
-  {
-    id: 1,
-    name: "Shoes",
-    description: "Running Shoes",
-    price: "Ksh 3000",
-    image:
-      "https://cdn.shopify.com/s/files/1/0071/6698/4310/files/Gravity-ColorwayHeader.jpg?v=1600368766)",
-  },
-  {
-    id: 2,
-    name: "PS 5 Black Edition",
-    description: "Gamming",
-    price: "Ksh 53000",
-    image: "https://www.cio.co.ke/wp-content/uploads/2020/09/playstation-5.jpg",
-  },
-  {
-    id: 3,
-    name: "Trouser",
-    description: "Lower body wear",
-    price: "Ksh 1500",
-    image: "https://ecstasybd.com/images/thumbs/0005410_tanjim-trouser.jpeg",
-  },
-];
-
-const Products = () => {
+const Products = ({ products }) => {
   const classes = useStyles();
   return (
     <main className={classes.content}>
