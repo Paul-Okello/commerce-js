@@ -21,6 +21,7 @@ function App() {
     fetchProducts();
     fetchCart();
   }, []);
+  console.log(products);
 
   return (
     <div>
