@@ -17,6 +17,7 @@ function App() {
     const item = await commerce.cart.add(productId, quantity);
     setCart(item.cart);
   };
+  useEffect(() => {}, []);
   useEffect(() => {
     fetchProducts();
     fetchCart();
