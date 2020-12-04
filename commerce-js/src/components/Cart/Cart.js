@@ -1,8 +1,15 @@
-import { Button, Container, Grid, Typography } from "@material-ui/core";
+import {
+  Button,
+  CircularProgress,
+  Container,
+  Grid,
+  Typography,
+} from "@material-ui/core";
 import React from "react";
+import useStyles from "./styles";
 
 const Cart = ({ cart }) => {
-  const isEmpty = !cart.line_items.length;
+  const classes = useStyles();
   const EmptyCart = () => (
     <Typography variant="subtitle1">No Items In Your Shopping Cart</Typography>
   );
@@ -42,13 +49,15 @@ const Cart = ({ cart }) => {
       </div>
     </>
   );
+
+  if (!cart.line_items) return <CircularProgress />;
   return (
     <Container>
       <div className={classes.toolbar} />
       <Typography className={classes.title} variant="h3">
         Your Shopping Cart
       </Typography>
-      {isEmpty ? <EmptyCart /> : <FilledCart />}
+      {!cart.line_items.length ? <EmptyCart /> : <FilledCart />}
     </Container>
   );
 };
