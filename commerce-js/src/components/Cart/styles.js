@@ -34,4 +34,8 @@ export default makeStyles((theme) => ({
       marginRight: "auto",
     },
   },
+  loader: {
+    display: "grid",
+    placeItems: "center",
+  },
 }));
