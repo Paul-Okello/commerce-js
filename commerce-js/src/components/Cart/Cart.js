@@ -5,6 +5,7 @@ import {
   LinearProgress,
   Typography,
 } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import React from "react";
 import CartItem from "./CartItem/CartItem";
 import useStyles from "./styles";
@@ -12,7 +13,11 @@ import useStyles from "./styles";
 const Cart = ({ cart }) => {
   const classes = useStyles();
   const EmptyCart = () => (
-    <Typography variant="subtitle1">No Items In Your Shopping Cart</Typography>
+    <Typography variant="subtitle1">
+      <Link to="/" className={classes.link}>
+        Start Adding Some
+      </Link>
+    </Typography>
   );
   const FilledCart = () => (
     <>
