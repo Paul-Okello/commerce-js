@@ -13,6 +13,7 @@ import useStyles from "./styles";
 import AddressForm from "../AddressFrom";
 import PaymentForm from "../PaymentFrom";
 import { commerce } from "../../../lib/commerce";
+import { Link } from "react-router-dom";
 
 const steps = ["Shipping Address", "Payment Details"];
 
@@ -44,7 +45,19 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
     setShippingData(data);
     nextStep();
   };
-  const Confirmation = () => <div>Confirmation</div>;
+  const Confirmation = () => (
+    <>
+      <div>
+        <Typography variant="h5">Thank you for your purchase</Typography>
+        <Divider className={classes.divider} />
+        <Typography variant="subtitle2">Order ref:</Typography>
+        <br />
+        <Button component={Link} to="/" type="button" variant="outlined">
+          Back to Home
+        </Button>
+      </div>
+    </>
+  );
 
   const Form = () =>
     activeStep === 0 ? (
