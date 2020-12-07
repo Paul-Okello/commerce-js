@@ -57,6 +57,20 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
         </Button>
       </div>
     </>
+    ) : (
+      <div className={classes.spinner}>
+        <CircularProgress />
+      </div>
+    );
+  if (error) {
+    return (
+      <>
+        <Typography variant="h5">Error: {error}</Typography>
+        <br />
+        <Button component={Link} to="/" type="button" variant="outlined">
+          Back to Home
+        </Button>
+      </>
   );
 
   const Form = () =>
