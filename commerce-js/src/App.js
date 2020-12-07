@@ -33,6 +33,12 @@ function App() {
     const response = await commerce.cart.empty();
     setCart(response.cart);
   };
+
+  const refreshCart = async () => {
+    const newCart = await commerce.cart.refresh();
+    setCart(newCart);
+  };
+
   const handleCaptureCheckout = async (checkoutToken, newOrder) => {
     try {
       const incomingOrder = await commerce.checkout.capture(
