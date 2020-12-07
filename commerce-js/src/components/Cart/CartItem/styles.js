@@ -1,22 +1,18 @@
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 
-export default makeStyles((theme) => ({
+export default makeStyles(() => ({
   media: {
     height: 260,
   },
   cardContent: {
-    display: "flex",
-    justifyContent: "space-between",
-    [theme.breakpoints.down("md")]: {
-      display: "flex",
-      flexDirection: "column",
-    },
+    display: 'flex',
+    justifyContent: 'space-between',
   },
-  cardActions: {
-    justifyContent: "space-between",
+  cartActions: {
+    justifyContent: 'space-between',
   },
   buttons: {
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
   },
 }));
