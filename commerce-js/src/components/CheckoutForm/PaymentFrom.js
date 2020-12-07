@@ -3,21 +3,27 @@ import { Typography, Button, Divider } from "@material-ui/core";
 import {
   Elements,
   CardElement,
-  ElementConsumer,
+  ElementsConsumer,
 } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import Review from "./Review";
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 
-const PaymentFrom = ({ checkoutToken, backStep }) => {
-  const handleSubmit = (e, elements, stripe) => {
+const PaymentFrom = ({
+  checkoutToken,
+  backStep,
+  onCaptureCheckout,
+  nextStep,
+  shippingData,
+}) => {
+  const handleSubmit = async (e, elements, stripe) => {
     e.preventDefault();
     if (!stripe || !elements) return;
 
     const cardElement = elements.getElement(CardElement);
 
-    const { error, paymentMethod } = stripe.createPaymentMethod({
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: cardElement,
     });
@@ -47,6 +53,8 @@ const PaymentFrom = ({ checkoutToken, backStep }) => {
           },
         },
       };
+      onCaptureCheckout(checkoutToken.id, orderData);
+      nextStep();
     }
   };
   return (
@@ -57,7 +65,7 @@ const PaymentFrom = ({ checkoutToken, backStep }) => {
         Payment method
       </Typography>
       <Elements stripe={stripePromise}>
-        <ElementConsumer>
+        <ElementsConsumer>
           {({ elements, stripe }) => (
             <form onSubmit={(e) => handleSubmit(e, elements, stripe)}>
               <CardElement />
@@ -77,7 +85,7 @@ const PaymentFrom = ({ checkoutToken, backStep }) => {
               </div>
             </form>
           )}
-        </ElementConsumer>
+        </ElementsConsumer>
       </Elements>
     </>
   );

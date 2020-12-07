@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import { useForm, FormProvider } from "react-hook-form";
 import FormInput from "./FormInput";
 import { commerce } from "../../lib/commerce";
+
 const AddressFrom = ({ checkoutToken, next }) => {
   const [shippingCountries, setShippingCountries] = useState([]);
   const [shippingCountry, setShippingCountry] = useState("");
@@ -18,8 +19,9 @@ const AddressFrom = ({ checkoutToken, next }) => {
   const [shippingSubdivision, setshippingSubdivision] = useState("");
   const [shippingOptions, setShippingOptions] = useState([]);
   const [shippingOption, setShippingOption] = useState("");
-
+  //React hook Form 🙂
   const methods = useForm();
+  //Data Fetching 😠
   const fetchShippingCountries = async (checkoutTokenId) => {
     const { countries } = await commerce.services.localeListShippingCountries(
       checkoutTokenId
@@ -85,7 +87,7 @@ const AddressFrom = ({ checkoutToken, next }) => {
           <Grid container spacing={3}>
             <FormInput name="firstName" label="First name" />
             <FormInput name="lastName" label="Last name" />
-            <FormInput name="address" label="Address" />
+            <FormInput name="address1" label="Address" />
             <FormInput name="email" label="Email" />
             <FormInput name="city" label="City" />
             <FormInput name="zip" label="ZIP / Postal code" />
