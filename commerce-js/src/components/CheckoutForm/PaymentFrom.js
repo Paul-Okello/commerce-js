@@ -27,6 +27,25 @@ const PaymentFrom = ({ checkoutToken, backStep }) => {
     } else {
       const orderData = {
         line_items: checkoutToken.live.line_items,
+        customer: {
+          firstname: shippingData.firstName,
+          lastname: shippingData.lastName,
+          email: shippingData.email,
+        },
+        shipping: {
+          name: "Primary",
+          street: shippingData.address1,
+          town_city: shippingData.city,
+          county_state: shippingData.shippingSubdivision,
+          country: shippingData.shippingCountry,
+        },
+        fulfilment: { shipping_method: shippingData.shippingOption },
+        payment: {
+          gateway: "stripe",
+          stripe: {
+            payment_method_id: paymentMethod.id,
+          },
+        },
       };
     }
   };
