@@ -46,7 +46,9 @@ function App() {
         newOrder
       );
       setOrder(incomingOrder);
-    } catch (error) {}
+    } catch (error) {
+      setErrorMessage(error.data.error.message);
+    }
   };
   useEffect(() => {
     fetchProducts();
