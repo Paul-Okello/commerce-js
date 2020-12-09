@@ -40,6 +40,11 @@ const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
 
     nextStep();
   };
+  const timeout = () => {
+    setTimeout(() => {
+      setIsFinished(true);
+    }, 3000);
+  };
 
   let Confirmation = () => (order.customer ? (
     <>
